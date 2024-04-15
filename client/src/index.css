@@ -1,0 +1,34 @@
+.btn-no-underline {
+    border-bottom: none;
+  }
+
+  .custom-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .custom-list li {
+    display: inline-block;
+    margin-right: 10px; 
+  }
+
+  .chart-container {
+    margin-right: 10px;
+  }
+  
+  .question-container {
+    flex-grow: 1;
+  }
+
+  .chart-container {
+    width: 200px; 
+    height: 200px; 
+  }
+
+  .texto-inline{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+
+  }
