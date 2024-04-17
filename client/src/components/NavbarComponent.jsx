@@ -1,3 +1,4 @@
+import LogoutComponent from "./DropdownItems/LogoutComponent";
 
 
 const NavbarComponent = () => {
@@ -31,11 +32,11 @@ const NavbarComponent = () => {
                         </a>
                         <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a className="dropdown-item" href="/account">Mi perfil</a></li>
-                            <li><a className="dropdown-item" href="/account/jobs">Editar Perfil</a></li>
+                            <li><a className="dropdown-item" href="//myprofile/update/:id">Editar Perfil</a></li>
                             <li><a className="dropdown-item" href="/account/applications">Mis aplicaciones</a></li>
                             <li><a className="dropdown-item" href="/account/jobs/mine">Mis trabajos</a></li>
                             <li><hr className="dropdown-divider" /></li>
-                            <li><a className="dropdown-item" href="/logout">Cerrar sesión</a></li>
+                            <LogoutComponent />
                         </ul>
                     </li>
                 </ul>

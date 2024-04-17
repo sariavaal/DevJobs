@@ -30,4 +30,14 @@ export const registerSchema = Yup.object().shape({
         ),
     confirmPassword: Yup.string()
         .oneOf([Yup.ref("password"), null], "Passwords must match"),
+    telefono: Yup.string()
+        .required("Phone number is required")
+        .min (8, "Phone number must be at least 8 characters")
+        //validar que sea numero
+        .matches(/^[0-9]+$/, "Phone number must be a number"),
+    direccion: Yup.string()
+        .required("Address is required")
+        .min(3, "Address must be at least 3 characters")
+
+    
 });

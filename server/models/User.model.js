@@ -26,6 +26,22 @@ const UserSchema = new mongoose.Schema(
         message: "Please enter a valid email",
       },
     },
+    telefono: {
+      type: String,
+      required: [true, "Phone number is required"],
+    },
+    direccion: {
+      type: String,
+      required: [true, "Address is required"],
+    },
+    profilePic: {
+      type: String,
+      default: "default.png",
+    },
+    descripcion: {
+      type: String,
+      default: "",
+    },
     //campo para admin y user
     role: {
       type: String,
@@ -38,8 +54,10 @@ const UserSchema = new mongoose.Schema(
     },
     token: {
         type: String,
-    }
+    },
+
   },
+
   { timestamps: true }
 );
 

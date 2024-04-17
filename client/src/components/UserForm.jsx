@@ -57,7 +57,9 @@ const UserForm = ({formType}) => {
                 lastName: "",
                 email: "",
                 password: "",
-                confirmPassword: ""
+                confirmPassword: "",
+                telefono: "",
+                direccion: "",
             }
             : {
                 email: "",
@@ -80,6 +82,16 @@ const UserForm = ({formType}) => {
                     <label htmlFor="lastName">Apellido</label>
                     <Field type="text" name="lastName" className="form-control" />
                     <ErrorMessage name="lastName" component="div" className="alert alert-danger" />
+                </div>
+                <div className='form-group'>
+                    <label htmlFor="telefono">Teléfono</label>
+                    <Field type="text" name="telefono" className="form-control" />
+                    <ErrorMessage name="telefono" component="div" className="alert alert-danger" />
+                </div>
+                <div className='form-group'>
+                    <label htmlFor="direccion">Dirección</label>
+                    <Field type="text" name="direccion" className="form-control" />
+                    <ErrorMessage name="direccion" component="div" className="alert alert-danger" />
                 </div>
             </>
         )}

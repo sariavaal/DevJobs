@@ -174,6 +174,21 @@ resetPassword: async (req, res) => {
   return res.status(200).json({ msg: 'Contraseña actualizada correctamente' });
 
 },
-  
 
+updateProfile: async (req, res) => {
+  UserModel.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
+      .then((updatedUser) => res.status(200).json({ person: updatedUser }))
+      .catch((err) =>
+          res.status(400).json({ message: "Something went wrong", error: err })
+      );
+ },
+ 
+ findUserById: (req, res) => {
+   UserModel.findById({ _id: req.params.id })
+       .then((oneSingleUser) => res.status(200).json({ user: oneSingleUser }))
+       .catch((err) =>
+           res.status(400).json({ message: "Something went wrong", error: err })
+       );
  }
+
+}
