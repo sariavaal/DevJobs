@@ -14,8 +14,8 @@ import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
 import LogoutComponent from "./components/DropdownItems/LogoutComponent";
 import HomePage from "./components/HomePage";
-
 import UpdateProfile from "./components/UpdateProfile";
+import MyProfile from "./components/MyProfile";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -109,6 +109,15 @@ function App() {
             element={
               <PrivateRoute>
                 <UpdateProfile />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/myprofile/:id"
+            element={
+              <PrivateRoute>
+                <MyProfile />
               </PrivateRoute>
             }
           />

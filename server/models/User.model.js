@@ -36,7 +36,7 @@ const UserSchema = new mongoose.Schema(
     },
     profilePic: {
       type: String,
-      default: "default.png",
+      default: "",
     },
     descripcion: {
       type: String,

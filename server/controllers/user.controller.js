@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const { mailConfig, emailOlvidePassword } = require("../config/mail.config");
 const { validatePassword } = require("../config/validatePassword");
 const { hashedPassword } = require("../config/hashedPassword");
+const upload = require("../config/subirImagen");
 
 module.exports = {
   createUser: async (req, res) => {
@@ -189,6 +190,24 @@ updateProfile: async (req, res) => {
        .catch((err) =>
            res.status(400).json({ message: "Something went wrong", error: err })
        );
- }
+ },
+
+ uploadProfilePic: async (req, res) => {
+  const userId = req.params.id;
+  const profilePic = req.file.filename; 
+  
+  try {
+    const user = await UserModel.findById(userId);
+    if (!user) {
+      return res.status(404).json({ msg: 'Usuario no encontrado' });
+    }
+    user.profilePic = profilePic;
+    await user.save();
+    return res.status(200).json({ msg: 'Imagen subida correctamente' });
+  } catch (error) {
+    console.error('Error al subir la imagen:', error);
+    return res.status(500).json({ msg: 'Error al subir la imagen' });
+  }
+},
 
 }

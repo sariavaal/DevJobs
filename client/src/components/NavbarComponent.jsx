@@ -1,7 +1,13 @@
 import LogoutComponent from "./DropdownItems/LogoutComponent";
-
+//import EditarPerfil from "./DropdownItems/EditarPerfil";
+import {Link} from "react-router-dom";
+import { useContext } from 'react';
+import UserContext from '../context/UserContext';
 
 const NavbarComponent = () => {
+
+    const {user} = useContext(UserContext);
+    const id = user?._id
     return (
         <div className="">
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -13,7 +19,7 @@ const NavbarComponent = () => {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav me-auto">
                     <li className="nav-item">
-                        <a className="nav-link active" aria-current="page" href="/">Home</a>
+                        <a className="nav-link active" aria-current="page" href="/inicio">Home</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="/">Publicar Trabajo</a>
@@ -31,8 +37,12 @@ const NavbarComponent = () => {
                             Mi cuenta
                         </a>
                         <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a className="dropdown-item" href="/account">Mi perfil</a></li>
-                            <li><a className="dropdown-item" href="//myprofile/update/:id">Editar Perfil</a></li>
+                            <li>
+                                <Link to={`/myprofile/${id}`} className="dropdown-item">Mi perfil</Link>
+                            </li>
+                            <li>
+                                <Link to={`/myprofile/update/${id}`} className="dropdown-item">Editar perfil</Link>
+                            </li>
                             <li><a className="dropdown-item" href="/account/applications">Mis aplicaciones</a></li>
                             <li><a className="dropdown-item" href="/account/jobs/mine">Mis trabajos</a></li>
                             <li><hr className="dropdown-divider" /></li>

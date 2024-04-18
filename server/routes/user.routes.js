@@ -1,5 +1,7 @@
 const express = require("express");
 
+const upload = require("../config/subirImagen");
+
 const userController = require("../controllers/user.controller");
 const { authenticate } = require("../config/jwt.config");
 
@@ -15,6 +17,10 @@ UserRouter.post("/logout", userController.logout);
 //rutas para usuario autenticado
 UserRouter.post("/myprofile/update/:id", userController.updateProfile);
 UserRouter.get("/myprofile/update/:id", userController.findUserById);
+//subida de foto de perfil
+UserRouter.post('/upload/:id', upload.single('file'), userController.uploadProfilePic);
+
+
 
 
 

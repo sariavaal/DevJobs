@@ -8,6 +8,8 @@ const cookieParser = require('cookie-parser'); // to be able to read cookies
 
 app.use(cookieParser());
 
+app.use('/uploads', express.static('uploads'));
+
 const corsOptions = {
     origin: 'http://localhost:5173',
     credentials: true,
