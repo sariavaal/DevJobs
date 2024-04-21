@@ -16,6 +16,7 @@ import LogoutComponent from "./components/DropdownItems/LogoutComponent";
 import HomePage from "./components/HomePage";
 import UpdateProfile from "./components/UpdateProfile";
 import MyProfile from "./components/MyProfile";
+import JobForm from "./components/JobsComponent/JobForm";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -118,6 +119,15 @@ function App() {
             element={
               <PrivateRoute>
                 <MyProfile />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/publicar-trabajo"
+            element={
+              <PrivateRoute>
+                <JobForm />
               </PrivateRoute>
             }
           />

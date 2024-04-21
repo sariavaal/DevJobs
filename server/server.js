@@ -25,10 +25,12 @@ const connectDB = require('./config/mongoose.config')
 connectDB().then (() => {
     const UserRouter = require('./routes/user.routes')
     const MovieRouter = require('./routes/movie.routes')
+    const JobRouter = require('./routes/job.routes')
     
 
     app.use('/api/user', UserRouter)
     app.use('/api/movie', MovieRouter)
+    app.use('/api/job', JobRouter)
 
     app.listen(DB_PORT, () => {
         console.log(`Server running on port ${DB_PORT}`)

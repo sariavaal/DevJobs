@@ -31,11 +31,12 @@ const MyProfile = () => {
 return (
     <div>
     <NavbarComponent />
-    <div className="container mt-5 ">
+    <h1 className="text-center mt-3">Mi perfil</h1>
+    <div className="container mt-3 ">
         
         <div className="row">
-            <div className="col-md-4">
-                <div className="card">
+            <div className="col-md-5">
+                <div className="card cardStyle">
                     <div className="card-body text-center">
                         <img
                             src={user?.profilePicUrl}
@@ -43,24 +44,25 @@ return (
                             className="img-fluid rounded-circle mb-3"
                             style={{ width: "150px" }}
                         />
-                        <h3>{user?.name}</h3>
-                        <p className="text-muted">{user?.firstName} {user?.lastName}</p>
+                        <h2 className="card-title">{user?.name}</h2>
+                        <p className="text-primary">{user?.firstName} {user?.lastName}</p>
+                        <h3 className="card-text">Sobre mi</h3>
+                        <p className="card-text">{user?.descripcion}</p>
                     </div>
                 </div>
             </div>
-            <div className="col-md-8">
-                <div className="card">
+            <div className="col-md-7">
+                <div className="card cardStyle">
                     <div className="card-body">
-                        <h5 className="card-title">Información del Perfil</h5>
+                        <h5 className="card-title text-center">Información Personal</h5>
                         <p className="card-text">Nombre: {user?.firstName}</p>
                         <p className="card-text">Apellido: {user?.lastName}</p>
-                        <p className="card-text">Descripción: {user?.descripcion}</p>
                         <p className="card-text">Email: {user?.email}</p>
                         <p className="card-text">Telefono: {user?.telefono}</p>
                         <p className="card-text">Dirección: {user?.direccion}</p>
-
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
