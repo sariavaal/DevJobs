@@ -44,7 +44,9 @@ const NavbarComponent = () => {
                                 <Link to={`/myprofile/update/${id}`} className="dropdown-item">Editar perfil</Link>
                             </li>
                             <li><a className="dropdown-item" href="/account/applications">Mis aplicaciones</a></li>
-                            <li><a className="dropdown-item" href="/account/jobs/mine">Mis trabajos</a></li>
+                            <li>
+                                <Link to={`/myprofile/${id}/jobs`} className="dropdown-item">Mis trabajos</Link>
+                            </li>
                             <li><hr className="dropdown-divider" /></li>
                             <LogoutComponent />
                         </ul>

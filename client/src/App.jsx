@@ -17,6 +17,8 @@ import HomePage from "./components/HomePage";
 import UpdateProfile from "./components/UpdateProfile";
 import MyProfile from "./components/MyProfile";
 import JobForm from "./components/JobsComponent/JobForm";
+import MyJobs from "./components/JobsComponent/MyJobsComponent";
+import ViewDetailOfJob from "./components/JobsComponent/ViewDetailOfJob";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -128,6 +130,24 @@ function App() {
             element={
               <PrivateRoute>
                 <JobForm />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/myprofile/:id/jobs"
+            element={
+              <PrivateRoute>
+                <MyJobs />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/job/:id"
+            element={
+              <PrivateRoute>
+                <ViewDetailOfJob />
               </PrivateRoute>
             }
           />

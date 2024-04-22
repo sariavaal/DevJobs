@@ -86,3 +86,23 @@
   border-radius: 5px;
   padding: 10px;
 }
+.alert {
+  padding: 4px !important;
+  margin-top: 5px !important;
+  border-radius: 4px !important;
+  margin-bottom: 2px !important;
+}
+.first-name {
+  font-size: 24px;
+  font-weight: semibold;
+  font-style: italic;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.texto-recortado {
+  white-space: pre-wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Número de líneas que quieres mostrar */
+  -webkit-box-orient: vertical;
+}

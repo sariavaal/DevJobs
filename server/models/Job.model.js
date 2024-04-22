@@ -1,5 +1,40 @@
 const mongoose = require("mongoose");
-const User = require("./User.model");
+const UserModel = require("./User.model");
+
+
+
+const PropuestaSchema = new mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    },
+    user_name: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    telefono: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    status: {
+        enum: ["aceptado", "rechazado", "pendiente"],
+        default: "pendiente",
+        type: String
+    },
+});
 
 const JobSchema = new mongoose.Schema({
     title: {
@@ -34,7 +69,20 @@ const JobSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-    }
+    },
+    status : {
+        enum: ["open", "closed"],
+        type: String,
+        default: "open"
+    }, 
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    propuestas: [PropuestaSchema]
 });
+
+
+   
 
 module.exports.JobModel = mongoose.model("Job", JobSchema)
