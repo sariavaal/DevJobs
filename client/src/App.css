@@ -115,3 +115,21 @@
   content: "\2713"; /* Código Unicode para el símbolo de checkmark */
   margin-right: 5px; /* Espacio entre el icono y el texto */
 }
+.search-card-title {
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 8px;
+}
+.search-card-text {
+  white-space: pre-wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  font-size: small;
+  height: 75px;
+  -webkit-line-clamp: 4; /* Número de líneas que quieres mostrar */
+  -webkit-box-orient: vertical;
+}
+.search-card {
+  min-height: 180px !important;
+}
