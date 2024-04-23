@@ -85,7 +85,7 @@ const ViewDetailOfJob = () => {
             </div>
             {
                 user._id === job.user &&
-                <JobProposalsList jobProposals={job.propuestas} />
+                <JobProposalsList jobProposals={job.propuestas} jobId={id} />
             }
             {
                 user._id !== job.user && !alreadyApplied &&

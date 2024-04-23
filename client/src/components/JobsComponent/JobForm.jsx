@@ -6,12 +6,15 @@ import { useContext } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 import NavbarComponent from "../NavbarComponent";
+import { useNavigate } from "react-router-dom";
 
 import MapComponent from "./MapComponente";
 
 const JobForm = () => {
   const { user } = useContext(UserContext);
   const id = user?._id;
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (
     values,
@@ -32,6 +35,7 @@ const JobForm = () => {
       });
       setSubmitting(false);
       resetForm();
+      navigate("/inicio");
     } catch (err) {
       console.log("Error: ", err.response.data);
       setErrors({ general: err.response.data.msg });

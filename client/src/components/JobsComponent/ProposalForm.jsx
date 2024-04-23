@@ -5,13 +5,14 @@ import Swal from "sweetalert2";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import UserContext from "../../context/UserContext";
 import { useContext, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const ProposalForm = () => {
   const { user } = useContext(UserContext);
   const userId = user?._id;
   const user_name = user?.firstName + " " + user?.lastName;
   const { id } = useParams();
-  console.log('jobbb:',id)
+  const navigate = useNavigate();
+  //console.log('jobbb:',id)
   
   
 //post para proposals
@@ -34,6 +35,7 @@ const ProposalForm = () => {
         title: "Propuesta enviada!",
         text: "Tu propuesta ha sido enviada!",
       });
+      navigate("/inicio");
     } catch (error) {
       console.log(error);
     }

@@ -19,6 +19,8 @@ import MyProfile from "./components/MyProfile";
 import JobForm from "./components/JobsComponent/JobForm";
 import MyJobs from "./components/JobsComponent/MyJobsComponent";
 import ViewDetailOfJob from "./components/JobsComponent/ViewDetailOfJob";
+import PropuestasList from "./components/JobsComponent/MyJobsApplications";
+import SearchResultPage from "./components/JobsComponent/SearchResultPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -148,6 +150,24 @@ function App() {
             element={
               <PrivateRoute>
                 <ViewDetailOfJob />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/job/proposal/:id"
+            element={
+              <PrivateRoute>
+                <PropuestasList />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/search/:query"
+            element={
+              <PrivateRoute>
+                <SearchResultPage />
               </PrivateRoute>
             }
           />

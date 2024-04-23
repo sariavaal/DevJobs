@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import NavbarComponent from './NavbarComponent';
 import ProfilePicUploader from './ProfilePicUploader';
+import { useNavigate } from 'react-router-dom';
 
 
 const UpdateProfile = () => {
@@ -13,6 +14,8 @@ const UpdateProfile = () => {
     console.log('id el params',id);
     const [user, setUser] = useState({});
     const [initialValues, setInitialValues] = useState({});
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (id) {
@@ -49,8 +52,8 @@ const UpdateProfile = () => {
                 icon: "success",
                 title: "Actualizado!",
                 text: "Datos actualizados correctamente!",
-                
             });
+            navigate('/inicio');
         } catch (error) {
             console.log(error);
         }

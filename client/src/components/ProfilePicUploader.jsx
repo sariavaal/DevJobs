@@ -5,12 +5,15 @@ import axios from "axios";
 import { useContext } from 'react';
 import UserContext from '../context/UserContext';
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const ProfilePicUploader = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const {user} = useContext(UserContext);
     const [selectedImage, setSelectedImage] = useState(null);
     const id = user?._id
+
+    const navigate = useNavigate();
 
     const dropzoneRef = useRef(null);
 
@@ -39,9 +42,9 @@ const ProfilePicUploader = () => {
             Swal.fire({
                 icon: "success",
                 title: "Actualizado!",
-                text: "Imagen de perfil actualizada correctamente!",
-                
+                text: "Imagen de perfil actualizada correctamente!",  
             });
+            navigate('/inicio');
         } catch (error) {
             console.log(error);
         }
