@@ -3,6 +3,7 @@ import { useContext } from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NavbarComponent from "../NavbarComponent";
+import { Link } from "react-router-dom";
 
 const MyJobsComponent = () => {
   const { user } = useContext(UserContext);
@@ -100,6 +101,14 @@ const MyJobsComponent = () => {
                         >
                           {job.status === "open" ? "Cerrar" : "Cerrado"}
                         </button>
+                      </td>
+                      <td>
+                        <Link
+                          to={`/job/${job._id}`}
+                          className="btn btn-primary"
+                        >
+                          Ver
+                        </Link>
                       </td>
                     </tr>
                   );

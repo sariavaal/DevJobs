@@ -8,6 +8,7 @@ const EmailConfirmation = () => {
   const [confirmationMessage, setConfirmationMessage] = useState("");
   const [error, setError] = useState("");
   const [alreadyConfirmed, setAlreadyConfirmed] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(""); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,31 +17,30 @@ const EmailConfirmation = () => {
             `http://localhost:8000/api/user/verify/${userId}/${token}`, 
             { withCredentials: true }
         ).then((res) => {
-            let response = res;
+          let response = res;
+          if (response.data.confirmed) {
+            setConfirmationMessage("Email confirmado con exito!");
+            setError("");
+            setSuccessMessage(response.data.msg); 
             setAlreadyConfirmed(true);
-            if (response.data.confirmed) {
-                setConfirmationMessage("Email confirmed successfully!");
-                setError("");
-            } else {
-                setConfirmationMessage("");
-                setError(response.data.msg);
-            }
-        }).catch((error) => {
+          } else {
             setConfirmationMessage("");
-            console.log(error);
-            setError("Error confirming email");
+            setError(response.data.msg);
+          }
+        })
+        .catch((error) => {
+          setConfirmationMessage("");
+          console.log(error);
+          setError("Error al confirmar el email");
         });
-    } else {
-        setConfirmationMessage("Email confirmed successfully!");
-        setError("");
     }
-  }, [ userId, token,alreadyConfirmed ]);
+  }, [userId, token, alreadyConfirmed]);
 
   return (
     <div className="container mt-5 text-center">
-      {confirmationMessage && !error && (
+      {successMessage && (
         <div>
-          <p>{confirmationMessage}</p>
+          <p>{successMessage}</p>
           <button
             className="btn btn-primary"
             onClick={() => navigate("/")}
@@ -50,8 +50,8 @@ const EmailConfirmation = () => {
         </div>
       )}
       {error && !confirmationMessage && <p>{error}</p>}
+      {confirmationMessage && !error && <p>{confirmationMessage}</p>}
     </div>
   );
 };
-
 export default EmailConfirmation;

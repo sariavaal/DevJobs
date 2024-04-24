@@ -1,4 +1,4 @@
-
+import * as Yup from 'yup';
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -10,9 +10,12 @@ const ProposalForm = () => {
   const { user } = useContext(UserContext);
   const userId = user?._id;
   const user_name = user?.firstName + " " + user?.lastName;
+  
   const { id } = useParams();
+  
   const navigate = useNavigate();
   //console.log('jobbb:',id)
+  
   
   
 //post para proposals
@@ -24,11 +27,13 @@ const ProposalForm = () => {
           ...values,
           job: id,
           userId: userId,
-          user_name: user_name
+          user_name: user_name,
+          
         },
         { withCredentials: true }
       );
       console.log('id:',userId)
+     
       console.log('response:',response.data);
       Swal.fire({
         icon: "success",
@@ -41,13 +46,21 @@ const ProposalForm = () => {
     }
   };
   
+  const validationSchema = Yup.object().shape({
+    description: Yup.string().required("La descripción es requerida")
+    .min (10, "La descripción debe tener al menos 10 caracteres"),
+    
+  });
 
   return (
     <Formik
       initialValues={{
         description: "",
+        email: user?.email,
+        telefono: user?.telefono,
       }}
-      onSubmit={(values) => {
+      validationSchema={validationSchema}
+      onSubmit={(values,) => {
         createProposal(values);
       }}
     >
@@ -63,6 +76,7 @@ const ProposalForm = () => {
             id="description"
             name="description"
             component="textarea"
+            placeholder="..ej: Me interesa el trabajo, tengo 10 años de experiencia..."
           />
           <ErrorMessage
             name="description"

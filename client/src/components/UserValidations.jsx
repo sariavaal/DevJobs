@@ -3,41 +3,42 @@ import * as Yup from 'yup';
 
 export const loginSchema = Yup.object().shape({
     email: Yup.string()
-        .email("Invalid email address")
-        .required("Email is required"),
+        .email("Direccion de correo no válida")
+        .required("El email es obligatorio"),
     password: Yup.string()
-        .required("Password is required")
-        .min(8, "Password must be at least 8 characters"),
+        .required("La contraseña es obligatoria")
+        .min(8, "La contraseña debe tener al menos 8 caracteres")
 })
+
     
 
 export const registerSchema = Yup.object().shape({
     firstName: Yup.string()
-        .required("First name is required")
-        .min(3, "First name must be at least 3 characters"),
+        .required("El nombre es obligatorio")
+        .min(3, "El nombre debe tener al menos 3 caracteres"),
     lastName: Yup.string()
-        .required("Last name is required")
-        .min(3, "Last name must be at least 3 characters"),
+        .required("Apellido obligatorio")
+        .min(3, "Apellido debe tener al menos 3 caracteres"),
     email: Yup.string()
-        .email("Invalid email address")
-        .required("Email is required"),
+        .email("Direccion de correo no válida")
+        .required("El email es obligatorio"),
     password: Yup.string()
-        .required("Password is required")
-        .min(8, "Password must be at least 8 characters")
+        .required("La contraseña es obligatoria")
+        .min(8, "La contraseña debe tener al menos 8 caracteres")
         .matches(
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-            "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+            "La contraseña debe tener al menos una letra mayúscula, una letra minúscula, un número y un caracter especial"
         ),
     confirmPassword: Yup.string()
-        .oneOf([Yup.ref("password"), null], "Passwords must match"),
+        .oneOf([Yup.ref("password"), null], "Las contraseñas no coinciden"),
     telefono: Yup.string()
-        .required("Phone number is required")
-        .min (8, "Phone number must be at least 8 characters")
+        .required("El telefono es obligatorio")
+        .min (8, "El telefono debe tener al menos 8 caracteres")
         //validar que sea numero
-        .matches(/^[0-9]+$/, "Phone number must be a number"),
+        .matches(/^[0-9]+$/, "El telefono debe ser un número"),
     direccion: Yup.string()
-        .required("Address is required")
-        .min(3, "Address must be at least 3 characters")
+        .required("Dirección es obligatoria")
+        .min(3, "Dirección debe tener al menos 3 caracteres")
 
     
 });
